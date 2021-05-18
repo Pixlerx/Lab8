@@ -1,11 +1,11 @@
-package bsu.rfe.Buben.Lab8.servlets;
+package bsu.rfe.Buben.lab8.servlets;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import bsu.rfe.Buben.Lab8.entity.ChatMessage;
-import bsu.rfe.Buben.Lab8.entity.ChatUser;
+import bsu.rfe.Buben.lab8.entity.ChatMessage;
+import bsu.rfe.Buben.lab8.entity.ChatUser;
 public class ChatServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     // Карта текущих пользователей
@@ -27,8 +27,7 @@ public class ChatServlet extends HttpServlet {
             activeUsers = new HashMap<String, ChatUser>();
             // Поместить еѐ в контекст сервлета,
             // чтобы другие сервлеты могли до него добраться
-            getServletContext().setAttribute("activeUsers",
-                    activeUsers);
+            getServletContext().setAttribute("activeUsers", activeUsers);
         }
         // Если список сообщений не определѐн ...
         if (messages==null) {

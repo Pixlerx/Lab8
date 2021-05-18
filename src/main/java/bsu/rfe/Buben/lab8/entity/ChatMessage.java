@@ -1,4 +1,4 @@
-package bsu.rfe.Buben.Lab8.entity;
+package bsu.rfe.Buben.lab8.entity;
 
 public class ChatMessage {
     // Текст сообщения

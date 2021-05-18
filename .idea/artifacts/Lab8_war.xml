@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="war" name="Lab8:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
+    <output-path>$PROJECT_DIR$/out</output-path>
     <properties id="maven-jee-properties">
       <options>
         <module>Lab8</module>

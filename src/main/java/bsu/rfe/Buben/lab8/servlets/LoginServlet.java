@@ -1,4 +1,4 @@
-package bsu.rfe.Buben.Lab8.servlets;
+package bsu.rfe.Buben.lab8.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import bsu.rfe.Buben.Lab8.entity.ChatUser;
+import bsu.rfe.Buben.lab8.entity.ChatUser;
 public class LoginServlet extends ChatServlet {
     private static final long serialVersionUID = 1L;
     // Длительность сессии, в секундах
@@ -50,8 +50,7 @@ public class LoginServlet extends ChatServlet {
                 // Мы нашли session cookie
                 // Попытаться найти пользователя с таким sessionId
                 for (ChatUser aUser: activeUsers.values()) {
-                    if
-                    (aUser.getSessionId().equals(previousSessionId)) {
+                    if (aUser.getSessionId().equals(previousSessionId)) {
                         // Мы нашли такого, т.е. восстановили имя
                         name = aUser.getName();
                         aUser.setSessionId(request.getSession().getId());
@@ -74,15 +73,14 @@ public class LoginServlet extends ChatServlet {
             pw.println("<p><font color='red'>" + errorMessage + "</font></p>");
         }
         // Вывести форму
-        pw.println("<form action='/chat/' method='post'>Write username: <input type='text' name='name' value=''><input type='submit' value='Enter'>");
+        pw.println("<form action='/Lab8_war_exploded/' method='post'>Write username: <input type='text' name='name' value=''><input type='submit' value='Enter'>");
         pw.println("</form></body></html>");
         // Сбросить сообщение об ошибке в сессии
         request.getSession().setAttribute("error", null);
     }
     // Метод будет вызван при обращении к сервлету HTTP-методом POST
     // т.е. когда пользователь отправляет сервлету данные
-    protected void doPost(HttpServletRequest request, HttpServletResponse
-            response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Задать кодировку HTTP-запроса - очень важно!
         // Иначе вместо символов будет абракадабра
         request.setCharacterEncoding("UTF-8");
@@ -103,7 +101,7 @@ public class LoginServlet extends ChatServlet {
             // Сохранить в сессии сообщение об ошибке
             request.getSession().setAttribute("error", errorMessage);
             // Переадресовать обратно на исходную страницу с формой
-            response.sendRedirect(response.encodeRedirectURL("/Lab8/"));
+            response.sendRedirect(response.encodeRedirectURL("/Lab8_war_exploded/"));
         }
     }
     // Возвращает текстовое описание возникшей ошибки или null
@@ -126,8 +124,7 @@ public class LoginServlet extends ChatServlet {
             }
         }
         if (aUser.getSessionId().equals(sessionId) ||
-                aUser.getLastInteractionTime()<(Calendar.getInstance().getTimeInMillis()-
-                        sessionTimeout*1000)) {
+                aUser.getLastInteractionTime()<(Calendar.getInstance().getTimeInMillis()- sessionTimeout*1000)) {
             // Если указанное имя принадлежит текущему пользователю,
             // либо оно принадлежало кому-то другому, но сессия истекла,
             // то одобрить запрос пользователя на это имя
@@ -142,7 +139,7 @@ public class LoginServlet extends ChatServlet {
             // Добавить cookie в HTTP-ответ
             response.addCookie(sessionIdCookie);
             // Перейти к главному окну чата
-            response.sendRedirect(response.encodeRedirectURL("/Lab8/view.htm"));
+            response.sendRedirect(response.encodeRedirectURL("/Lab8_war_exploded/view.htm"));
             // Вернуть null, т.е. сообщений об ошибках нет
             return null;
         } else {
